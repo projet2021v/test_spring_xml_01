@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<context:property-placeholder location="classpath:application.properties"/>
+ 	
+	<bean id="cal01" class="beans.Calculatrice">
+		<property name="valeura" value="${valeura}"></property>
+		<property name="valeurb" value="${valeurb}"></property>
+	</bean>
+	
+	<bean id="myObjParent" class="beans.MyObject">
+		<property name="name" value="${nomA}"></property>
+		<property name="keywords">
+			<list>
+				<value>${keyw1}</value>
+				<value>${keyw2}</value>
+				<value>${keyw3}</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="myObjEnfant" class="beans.MyObject">
+		<property name="name" value="${nomB}"></property>
+		<property name="parentObj" ref="myObjParent"></property>
+	</bean>
+	
+</beans>
